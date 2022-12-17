@@ -25,9 +25,9 @@ function ReadContract() {
     const name = await contract.name()
     const symbol = await contract.symbol()
     const totalSupply = await contract.totalSupply()
-    const ownerTokens = await  contract.tokensOfOwner('0x024A88896b6a85BdacB2DE0F23e7fDFCa7091f5c')
+    const ownerTokens = await contract.tokensOfOwner('0x024A88896b6a85BdacB2DE0F23e7fDFCa7091f5c')
 
-    setTokenIds(ownerTokens)
+    setTokenIds(ownerTokens.toString())
 
 
     console.log(`\nReading from ${address}\n`)
@@ -36,6 +36,7 @@ function ReadContract() {
     console.log(`Total Supply: ${totalSupply}\n`)
     console.log(`Owner Tokens: ${ownerTokens}\n`)
 
+    // const imageUrl = `https://moonrunners.herokuapp.com/api/${tokenIds[0]}/image`
 }
 
 
@@ -50,8 +51,9 @@ function ReadContract() {
         Get contract details
       </button>
         <h1> 
-            You own the following tokens: 
+            You own the following tokens: {tokenIds}
         </h1>
+
 
       </header>
     </div>
