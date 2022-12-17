@@ -27,8 +27,7 @@ function ReadContract() {
     const totalSupply = await contract.totalSupply()
     const ownerTokens = await contract.tokensOfOwner('0x024A88896b6a85BdacB2DE0F23e7fDFCa7091f5c')
 
-    setTokenIds(ownerTokens.toString())
-
+    setTokenIds(ownerTokens)
 
     console.log(`\nReading from ${address}\n`)
     console.log(`Name: ${name}`)
@@ -50,11 +49,13 @@ function ReadContract() {
       >
         Get contract details
       </button>
-        <h1> 
-            You own the following tokens: {tokenIds}
-        </h1>
-
-
+        <div>
+          {tokenIds && tokenIds.map(tokenId => (
+            <div>
+              {tokenId.toString()}
+            </div>
+          ))}
+        </div>
       </header>
     </div>
   );
