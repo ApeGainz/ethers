@@ -1,27 +1,22 @@
-import { Network, Alchemy } from 'alchemy-sdk';
-import { ethers, provider, AlchemyProvider } from 'ethers';
+import {ethers} from 'ethers';
 import {useEffect, useState} from 'react';
 
-
 const Accounts = () => {
-
+  
   const [walletBalance, setBalance] = useState(null)
   const [walletAddress, setWalletAddress] = useState("");
 
-  // fyPRHA4xLNeZ3Ck39MsiOtdL27YaXJQG
+  // const apiKey = fyPRHA4xLNeZ3Ck39MsiOtdL27YaXJQG;
 
-  const provider = new ethers.providers.JsonRpcProvider('https://eth-mainnet.g.alchemy.com/v2/fyPRHA4xLNeZ3Ck39MsiOtdL27YaXJQG')
-
+  const provider = new ethers.providers.JsonRpcProvider('https://eth-mainnet.g.alchemy.com/v2/fyPRHA4xLNeZ3Ck39MsiOtdL27YaXJQG');
 
   useEffect(() => {
     async function fetchData() {
-      // You can await here
       const balance = await provider.getBalance("apegainz.eth")
       setBalance(balance)
-      // ...
     }
     fetchData();
-  }, []); // Or [] if effect doesn't need props or state
+  }, []); 
 
   if (walletBalance !== null){
     console.log(walletBalance.toString())
@@ -29,10 +24,7 @@ const Accounts = () => {
 
   console.log(provider)
 
-
-
   async function requestAccount(){
-
     if(window.ethereum){
       console.log('detected')
 
@@ -48,13 +40,10 @@ const Accounts = () => {
         console.log(error)
       }
 
-
-
     }
     else{
       console.log('metamask not detected')
     }
-
   }
 
   return (
@@ -66,12 +55,9 @@ const Accounts = () => {
       >
         Connect wallet!
       </button>
-
       <h1> 
         Wallet Address: {walletAddress}
       </h1>
-
-
       </header>
     </div>
   );

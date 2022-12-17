@@ -2,9 +2,8 @@
 
 import './App.css';
 import 'bulma/css/bulma.min.css';
-import { Network, Alchemy } from 'alchemy-sdk';
-import { ethers, provider, AlchemyProvider } from 'ethers';
-import {useEffect, useState} from 'react';
+import {ethers} from 'ethers';
+import {useState} from 'react';
 
 
 function ReadContract() {
